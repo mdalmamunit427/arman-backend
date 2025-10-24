@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import express, { Request, Response } from "express";
 import path from "path";
 import { router } from "./routes";
+import dotenv from 'dotenv';
+dotenv.config()
 
 const app = express();
 
@@ -15,7 +17,7 @@ app.use(compression());
 app.use(express.json()); 
 app.use(
   cors({
-    origin: ["http://localhost:3000","https://arman-mia.vercel.app"],
+    origin: ["http://localhost:3000","https://arman-mia.vercel.app", process.env.FRONTEND_URL!],
     credentials: true,
   })
 );
